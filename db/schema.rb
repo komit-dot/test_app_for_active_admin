@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2022_05_02_165841) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 2022_05_02_165841) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_portfolios_on_user_id"
   end
 
@@ -54,7 +57,7 @@ ActiveRecord::Schema.define(version: 2022_05_02_165841) do
     t.integer "purchase_price"
     t.integer "quantity"
     t.integer "remaining"
-    t.integer "portfolio_id"
+    t.bigint "portfolio_id"
     t.index ["portfolio_id"], name: "index_stocks_on_portfolio_id"
   end
 
